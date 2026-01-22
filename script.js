@@ -14,3 +14,21 @@ function update() {
 }
 
 setInterval(update, 2000);
+
+
+const alpha = document.querySelector(".progress.alpha");
+const beta = document.querySelector(".progress.beta");
+
+let alphaValue = 61;
+let betaValue = 45;
+
+setInterval(() => {
+  alphaValue += Math.random() * 1.2;
+  betaValue += Math.random() * 1.0;
+
+  if (alphaValue > 100) alphaValue = 100;
+  if (betaValue > 100) betaValue = 100;
+
+  alpha.style.width = alphaValue + "%";
+  beta.style.width = betaValue + "%";
+}, 2000);
