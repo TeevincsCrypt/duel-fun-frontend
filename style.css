@@ -157,3 +157,14 @@ body {
   margin-top: 20px;
   width: 100%;
 }
+
+
+@media (max-width: 700px) {
+  .duel-form {
+    grid-template-columns: 1fr;
+  }
+
+  .vs-label {
+    display: none;
+  }
+}
