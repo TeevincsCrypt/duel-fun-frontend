@@ -10,7 +10,10 @@
 }
 
 body {
-  background: radial-gradient(circle at top, #0f172a, #020617);
+  background:
+    radial-gradient(circle at 20% 10%, rgba(34,197,94,0.15), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(59,130,246,0.15), transparent 40%),
+    radial-gradient(circle at bottom, #020617, #000);
   color: white;
   min-height: 100vh;
 }
@@ -42,12 +45,15 @@ body {
 }
 
 .hero h1 {
-  font-size: 3rem;
-  line-height: 1.2;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  letter-spacing: -1px;
 }
 
 .hero span {
-  color: #22c55e;
+  background: linear-gradient(90deg, #22c55e, #4ade80);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero p {
@@ -59,10 +65,18 @@ body {
 .primary {
   background: linear-gradient(90deg, #22c55e, #4ade80);
   border: none;
-  padding: 14px 28px;
-  border-radius: 14px;
+  padding: 16px 32px;
+  border-radius: 16px;
   font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
+  box-shadow: 0 0 25px rgba(34,197,94,0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(34,197,94,0.7);
 }
 
 .duels {
@@ -72,23 +86,54 @@ body {
 }
 
 .duel-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 20px;
-  padding: 30px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 24px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.duel-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.06),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.duel-card:hover::before {
+  opacity: 1;
 }
 
 .team {
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: 700;
+}
+
+.team:first-child {
+  color: #22c55e;
+}
+
+.team:last-child {
+  color: #3b82f6;
 }
 
 .vs {
-  opacity: 0.5;
+  opacity: 0.4;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
 
@@ -304,5 +349,18 @@ body {
   .vs {
     font-size: 0.8rem;
     opacity: 0.6;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .duel-card {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
   }
 }
