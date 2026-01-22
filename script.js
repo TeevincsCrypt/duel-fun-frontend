@@ -57,3 +57,5 @@ async function connectWallet() {
 }
 
 connectBtn.addEventListener("click", connectWallet);
+
+connectBtn.disabled = true;
