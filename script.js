@@ -32,3 +32,28 @@ setInterval(() => {
   alpha.style.width = alphaValue + "%";
   beta.style.width = betaValue + "%";
 }, 2000);
+
+const connectBtn = document.getElementById("connectWallet");
+
+let walletAddress = null;
+
+async function connectWallet() {
+  try {
+    if (window.solana && window.solana.isPhantom) {
+      const response = await window.solana.connect();
+      walletAddress = response.publicKey.toString();
+
+      connectBtn.innerText = walletAddress.slice(0, 4) + "..." + walletAddress.slice(-4);
+      connectBtn.style.background = "#16a34a";
+
+      console.log("Connected wallet:", walletAddress);
+    } else {
+      alert("Phantom Wallet not found. Please install it.");
+      window.open("https://phantom.app/", "_blank");
+    }
+  } catch (err) {
+    console.log("Wallet connection rejected");
+  }
+}
+
+connectBtn.addEventListener("click", connectWallet);
