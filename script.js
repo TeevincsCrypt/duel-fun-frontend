@@ -59,3 +59,16 @@ async function connectWallet() {
 connectBtn.addEventListener("click", connectWallet);
 
 connectBtn.disabled = true;
+
+setInterval(() => {
+  aCap += Math.floor(Math.random() * 1000);
+  bCap += Math.floor(Math.random() * 1000);
+
+  animateCurve("curveA", 0, Math.min(aCap, cap));
+  animateCurve("curveB", 0, Math.min(bCap, cap));
+
+  capA.innerText = `$${aCap}`;
+  capB.innerText = `$${bCap}`;
+
+}, 1000);
+
