@@ -363,4 +363,8 @@ body {
     gap: 16px;
     text-align: center;
   }
+
+.cta:disabled {
+  opacity: 0.8;
+  cursor: default;
 }
